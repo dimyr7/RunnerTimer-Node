@@ -20,9 +20,12 @@ fs.readFile('./data.json', 'utf8', function(err, data){
 
 		var time = input.delta/ speed * 60;
 		minutes += time;
+		console.log("segment " + i + " of length " + input.delta + " was ran in " + time*60 + " seconds with a speed of " + speed);
 	}
 	var remainder = input.distance % input.delta;
-	minutes += remainder*lastSpeed;
+	var remainderMin = remainder / lastSpeed * 60;
+	minutes += remainderMin;
+	console.log("final segment  of length " + remainder + " was ran in " + remainderMin*60 + " seconds with a speed of " + speed);
 	console.log("It will take " + parseInt(minutes) + " minutes and " + parseInt(minutes%1.0*60) + " seconds to run " + input.distance + " miles.");
 
 });
